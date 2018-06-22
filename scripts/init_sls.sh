@@ -30,7 +30,8 @@ Init_system(){
   DEFAULT_LOCAL_IP=${LOCAL_IP:-$DEFAULT_LOCAL_IP}
   Write_Sls_File master-private-ip $DEFAULT_LOCAL_IP
   if [ -z "$DEFAULT_PUBLIC_IP" ];then
-      read -p  "Press Enter to use the public ip,(default null):" PUBLIC_IP
+      Echo_Info "Network mode: VPC or NAT"
+      read -p  "Press Enter to your public ip,(Otherwise enter):" PUBLIC_IP
       Write_Sls_File master-public-ip "${PUBLIC_IP}"
   else
       Write_Sls_File master-public-ip "${DEFAULT_PUBLIC_IP}"
