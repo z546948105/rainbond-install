@@ -29,8 +29,12 @@ Init_system(){
   LOCAL_IP=$(cat ./LOCAL_IP 2> /dev/null)
   DEFAULT_LOCAL_IP=${LOCAL_IP:-$DEFAULT_LOCAL_IP}
   Write_Sls_File master-private-ip $DEFAULT_LOCAL_IP
-  Write_Sls_File master-public-ip "${DEFAULT_PUBLIC_IP}"
-
+  if [ -z "$DEFAULT_PUBLIC_IP" ];then
+      read -p  "Press Enter to use the public ip,(default null):" PUBLIC_IP
+      Write_Sls_File master-public-ip "${PUBLIC_IP}"
+  else
+      Write_Sls_File master-public-ip "${DEFAULT_PUBLIC_IP}"
+  fi
   # configure hostname and hosts
   # reset /etc/hosts
   echo -e "127.0.0.1\tlocalhost" > /etc/hosts
