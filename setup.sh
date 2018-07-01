@@ -55,11 +55,11 @@ install_func(){
         else
             Echo_Info "Start install $module ..."
         fi
-        if ! (salt "*" state.sls $module);then
+        if ! (salt "*" state.sls $module | tqdm  --unit_scale 1 --desc "install $module" --total 600 --leave True >> /dev/null);then
             ((fail_num+=1))
             break
         fi
-        sleep 2
+        Echo_Info "End install $module ..."
     done
 
     if [ "$fail_num" -eq 0 ];then

@@ -58,6 +58,8 @@ Init_system(){
   else
     return 0
   fi
+  # install tqdm
+  pip install tqdm -y  > /dev/null 2>&1 
 }
 
 # Name   : Install_Base_Pkg
