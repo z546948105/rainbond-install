@@ -52,7 +52,7 @@ Init_system(){
   Write_Sls_File secretkey "${secretkey:-auv2aequ1dahj9GameeGam9fei8Kohng}"
   # install tqdm
   Echo_Info "install tqdm"
-  pip install tqdm -y  > /dev/null 2>&1 
+  pip install tqdm  > /dev/null 2>&1 
   #judgment below uses for offline env : do not exec ntp cmd ( changed by guox 2018.5.18 ).
   if [[ "$INSTALL_TYPE" != "offline" ]];then
     Echo_Info "update localtime"
