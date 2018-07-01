@@ -349,12 +349,12 @@ Check_Python_Urllib(){
             if ( pip show urllib3 > /dev/null 2>&1 );then
                 if [ "$SYS_NAME" == "centos" ];then
                     pip uninstall urllib3 -y  > /dev/null 2>&1 
-                    pip install tqdm -y  > /dev/null 2>&1 
                 else
                     pip install -U urllib3 -y > /dev/null 2>&1
-                    pip install tqdm -y  > /dev/null 2>&1 
+                    
                 fi
             fi
+            pip install tqdm -y  > /dev/null 2>&1 
         fi
     fi
 }
